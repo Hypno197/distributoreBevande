@@ -27,6 +27,7 @@ public class Main {
 
 		// inizio codice
 		// scelta bevanda calda/fredda
+		do {
 		System.out.println("Benvenuto al distributore di bevande");
 		System.out.println("Prova la nuova ratogade al mirtillo e pesca!");
 		do {
@@ -98,5 +99,6 @@ public class Main {
 			} else
 				System.out.println("Hai ricevuto " + creditoResiduo + "€ di resto.");
 		}
+		} while (conferma.equalsIgnoreCase("no"));
 	}
 }
