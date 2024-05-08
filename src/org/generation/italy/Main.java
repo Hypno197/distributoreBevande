@@ -54,10 +54,13 @@ public class Main {
 			}
 			// selezione prodotto
 			do {
-				do {
+				do { //ciclo verifica codice inserito
 					System.out.println("Scegli la tua bevanda");
 					codiceUser = sc.nextInt();
 					sc.nextLine();
+					if (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
+							|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length)
+						System.out.println("Codice non corretto!!");
 				} while (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
 						|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length);
 				
