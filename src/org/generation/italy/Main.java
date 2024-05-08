@@ -28,82 +28,83 @@ public class Main {
 		// inizio codice
 		// scelta bevanda calda/fredda
 		do {
-		System.out.println("Benvenuto al distributore di bevande");
-		System.out.println("Prova la nuova ratogade al mirtillo e pesca!");
-		do {
+			System.out.println("Benvenuto al distributore di bevande");
+			System.out.println("Prova la nuova ratogade al mirtillo e pesca!");
 			do {
-				System.out.println("Scegli fra bevanda calda o fredda!");
-				sceltaBevanda = sc.nextLine();
-				if (sceltaBevanda.equalsIgnoreCase("calda") || sceltaBevanda.equalsIgnoreCase("fredda"))
-					System.out.println("Perfetto! Ora scegli la tua bevanda!");
-				else
-					System.out.println("Selezione non valida!");
-			} while (!sceltaBevanda.equalsIgnoreCase("calda") && !sceltaBevanda.equalsIgnoreCase("fredda"));
-			// mostra listino bevande
-			if (sceltaBevanda.equalsIgnoreCase("calda")) {
-				for (int i = 0; i < bevandeCalde.length; i++) {
-					System.out.print("Codice Prodotto " + (i + 1) + " :\n" + bevandeCalde[i]);
-					System.out.println(" Prezzo: " + prezziBevandeCalde[i] + "€");
-				}
+				do {
+					System.out.println("Scegli fra bevanda calda o fredda!");
+					sceltaBevanda = sc.nextLine();
+					if (sceltaBevanda.equalsIgnoreCase("calda") || sceltaBevanda.equalsIgnoreCase("fredda"))
+						System.out.println("Perfetto! Ora scegli la tua bevanda!");
+					else
+						System.out.println("Selezione non valida!");
+				} while (!sceltaBevanda.equalsIgnoreCase("calda") && !sceltaBevanda.equalsIgnoreCase("fredda"));
+				// mostra listino bevande
+				if (sceltaBevanda.equalsIgnoreCase("calda")) {
+					for (int i = 0; i < bevandeCalde.length; i++) {
+						System.out.print("Codice Prodotto " + (i + 1) + " :\n" + bevandeCalde[i]);
+						System.out.println(" Prezzo: " + prezziBevandeCalde[i] + "€");
+					}
 
-			} else {
-				for (int i = 0; i < bevandeFredde.length; i++) {
-					System.out.print("Codice Prodotto " + (i + 1) + " :\n" + bevandeFredde[i]);
-					System.out.println(" Prezzo: " + prezziBevandeFredde[i] + "€");
+				} else {
+					for (int i = 0; i < bevandeFredde.length; i++) {
+						System.out.print("Codice Prodotto " + (i + 1) + " :\n" + bevandeFredde[i]);
+						System.out.println(" Prezzo: " + prezziBevandeFredde[i] + "€");
+					}
 				}
-			}
-			// selezione prodotto
-			do {
-				do { //ciclo verifica codice inserito
-					System.out.println("Scegli la tua bevanda");
-					codiceUser = sc.nextInt();
+				// selezione prodotto
+				do {
+					do { // ciclo verifica codice inserito
+						System.out.println("Scegli la tua bevanda");
+						codiceUser = sc.nextInt();
+						sc.nextLine();
+						if (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
+								|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeFredde.length)
+							System.out.println("Codice non corretto!!");
+					} while (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
+							|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length);
+
+					if (sceltaBevanda.equalsIgnoreCase("calda") && giacenzaBevCalde[codiceUser - 1] > 0) {
+						System.out.println("Hai scelto " + bevandeCalde[codiceUser - 1] + ". Inserisci "
+								+ (prezziBevandeCalde[codiceUser - 1] - creditoResiduo) + "€");
+						importo = prezziBevandeCalde[codiceUser - 1] - creditoResiduo;
+						giacenzaBevCalde[codiceUser - 1]--;
+
+					} else if (giacenzaBevFredde[codiceUser - 1] > 0) {
+						System.out.println("Hai scelto " + bevandeFredde[codiceUser - 1] + ". Inserisci "
+								+ (prezziBevandeFredde[codiceUser - 1] - creditoResiduo) + "€");
+						importo = prezziBevandeFredde[codiceUser - 1] - creditoResiduo;
+						giacenzaBevFredde[codiceUser - 1]--;
+					} else if (giacenzaBevFredde[codiceUser - 1] == 0 || giacenzaBevCalde[codiceUser - 1] == 0)
+						System.out.println("La bevanda è terminata!");
+					else
+						System.out.println("Selezione non valida!");
+				} while (giacenzaBevFredde[codiceUser - 1] == 0 || giacenzaBevCalde[codiceUser - 1] == 0);
+				// pagamento
+				do {
+					System.out.print("Credito inserito: ");
+					creditoInserito = sc.nextFloat() + creditoInserito;
 					sc.nextLine();
-					if (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
-							|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length)
-						System.out.println("Codice non corretto!!");
-				} while (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
-						|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length);
-				
-				if (sceltaBevanda.equalsIgnoreCase("calda") && giacenzaBevCalde[codiceUser - 1] > 0) {
-					System.out.println("Hai scelto " + bevandeCalde[codiceUser - 1] + ". Inserisci "
-							+ (prezziBevandeCalde[codiceUser - 1] - creditoResiduo) + "€");
-					importo = prezziBevandeCalde[codiceUser - 1] - creditoResiduo;
-					giacenzaBevCalde[codiceUser - 1]--;
-
-				} else if (giacenzaBevFredde[codiceUser - 1] > 0) {
-					System.out.println("Hai scelto " + bevandeFredde[codiceUser - 1] + ". Inserisci "
-							+ (prezziBevandeFredde[codiceUser - 1] - creditoResiduo) + "€");
-					importo = prezziBevandeFredde[codiceUser - 1] - creditoResiduo;
-					giacenzaBevFredde[codiceUser - 1]--;
-				} else if (giacenzaBevFredde[codiceUser - 1] == 0 || giacenzaBevCalde[codiceUser - 1] == 0)
-					System.out.println("La bevanda è terminata!");
-				else
-					System.out.println("Selezione non valida!");
-			} while (giacenzaBevFredde[codiceUser - 1] == 0 || giacenzaBevCalde[codiceUser - 1] == 0);
-			// pagamento
-			do {
-				System.out.print("Credito inserito: ");
-				creditoInserito = sc.nextFloat() + creditoInserito;
-				sc.nextLine();
-				creditoResiduo = creditoInserito - importo;
-				System.out.println("Importo residuo: " + creditoResiduo + "€");
-			} while (creditoResiduo < 0);
-			creditoInserito = 0;
-			System.out.println("Ecco la tua bevanda!");
-			System.out.println("Vuoi prendere un'altra bevanda?");
-			conferma = sc.nextLine();
-		} while (conferma.equalsIgnoreCase("si"));
-		// resto/beneficenza
-		if (creditoResiduo > 0) {
-			System.out.println("Vuoi donare il resto in beneficenza?");
-			sceltaBeneficenza = sc.nextLine();
-			if (sceltaBeneficenza.equalsIgnoreCase("si")) {
-				System.out.println("Grazie per la tua donazione!");
-				donazione = donazione + creditoResiduo;
+					creditoResiduo = creditoInserito - importo;
+					System.out.println("Importo residuo: " + creditoResiduo + "€");
+				} while (creditoResiduo < 0);
+				creditoInserito = 0;
+				System.out.println("Ecco la tua bevanda!");
+				System.out.println("Vuoi prendere un'altra bevanda?");
+				conferma = sc.nextLine();
+			} while (conferma.equalsIgnoreCase("si"));
+			// resto/beneficenza
+			if (creditoResiduo > 0) {
+				System.out.println("Vuoi donare il resto in beneficenza?");
+				sceltaBeneficenza = sc.nextLine();
+				if (sceltaBeneficenza.equalsIgnoreCase("si")) {
+					System.out.println("Grazie per la tua donazione!");
+					donazione = donazione + creditoResiduo;
+					creditoResiduo = 0;
+				} else
+					System.out.println("Hai ricevuto " + creditoResiduo + "€ di resto.");
 				creditoResiduo = 0;
-			} else
-				System.out.println("Hai ricevuto " + creditoResiduo + "€ di resto.");
-		}
+			}
 		} while (conferma.equalsIgnoreCase("no"));
 	}
 }
