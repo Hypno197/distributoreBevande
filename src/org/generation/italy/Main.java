@@ -23,7 +23,7 @@ public class Main {
 		double importo = 0;
 		float creditoInserito = 0;
 		double creditoResiduo = 0;
-		double donazione =0;
+		double donazione = 0;
 
 		// inizio codice
 		// scelta bevanda calda/fredda
@@ -59,7 +59,6 @@ public class Main {
 					sc.nextLine();
 				} while (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
 						|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length);
-				
 
 				if (sceltaBevanda.equalsIgnoreCase("calda") && giacenzaBevCalde[codiceUser - 1] > 0) {
 					System.out.println("Hai scelto " + bevandeCalde[codiceUser - 1] + ". Inserisci "
@@ -91,13 +90,13 @@ public class Main {
 
 		if (creditoResiduo > 0) {
 			System.out.println("Vuoi donare il resto in beneficenza?");
-			sceltaBeneficenza=sc.nextLine();
-					if (sceltaBeneficenza.equalsIgnoreCase("si")) {
-						System.out.println("Grazie per la tua donazione!");
-						donazione = donazione+creditoResiduo;
-						creditoResiduo=0;
-					}
-			System.out.println("Hai ricevuto " + creditoResiduo + "€ di resto.");
+			sceltaBeneficenza = sc.nextLine();
+			if (sceltaBeneficenza.equalsIgnoreCase("si")) {
+				System.out.println("Grazie per la tua donazione!");
+				donazione = donazione + creditoResiduo;
+				creditoResiduo = 0;
+			} else
+				System.out.println("Hai ricevuto " + creditoResiduo + "€ di resto.");
 		}
 	}
 }
