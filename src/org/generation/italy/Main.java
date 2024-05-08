@@ -60,7 +60,7 @@ public class Main {
 					sc.nextLine();
 				} while (sceltaBevanda.equalsIgnoreCase("calda") && codiceUser > bevandeCalde.length
 						|| sceltaBevanda.equalsIgnoreCase("fredda") && codiceUser > bevandeCalde.length);
-
+				
 				if (sceltaBevanda.equalsIgnoreCase("calda") && giacenzaBevCalde[codiceUser - 1] > 0) {
 					System.out.println("Hai scelto " + bevandeCalde[codiceUser - 1] + ". Inserisci "
 							+ (prezziBevandeCalde[codiceUser - 1] - creditoResiduo) + "€");
@@ -88,7 +88,7 @@ public class Main {
 			System.out.println("Vuoi prendere un'altra bevanda?");
 			conferma = sc.nextLine();
 		} while (conferma.equalsIgnoreCase("si"));
-
+		// resto/beneficenza
 		if (creditoResiduo > 0) {
 			System.out.println("Vuoi donare il resto in beneficenza?");
 			sceltaBeneficenza = sc.nextLine();
