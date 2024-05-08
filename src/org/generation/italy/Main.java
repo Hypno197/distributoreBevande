@@ -68,11 +68,13 @@ public class Main {
 					System.out.println("Hai scelto " + bevandeCalde[codiceUser - 1] + ". Inserisci "
 							+ (prezziBevandeCalde[codiceUser - 1] - creditoResiduo) + "€");
 					importo = prezziBevandeCalde[codiceUser - 1] - creditoResiduo;
+					giacenzaBevCalde[codiceUser - 1]--;
 
 				} else if (giacenzaBevFredde[codiceUser - 1] > 0) {
 					System.out.println("Hai scelto " + bevandeFredde[codiceUser - 1] + ". Inserisci "
 							+ (prezziBevandeFredde[codiceUser - 1] - creditoResiduo) + "€");
 					importo = prezziBevandeFredde[codiceUser - 1] - creditoResiduo;
+					giacenzaBevFredde[codiceUser - 1]--;
 				} else if (giacenzaBevFredde[codiceUser - 1] == 0 || giacenzaBevCalde[codiceUser - 1] == 0)
 					System.out.println("La bevanda è terminata!");
 				else
