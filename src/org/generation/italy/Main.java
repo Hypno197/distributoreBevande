@@ -29,7 +29,16 @@ public class Main {
 		// scelta bevanda calda/fredda
 		do {
 			System.out.println("Benvenuto al distributore di bevande");
-			System.out.println("Prova la nuova ratogade al mirtillo e pesca!");
+			System.out.println("\r\n"
+					+ "     _______..___  ___.      ___      .______      .___________..______    __  .___________. _______      _______.™\r\n"
+					+ "    /       ||   \\/   |     /   \\     |   _  \\     |           ||   _  \\  |  | |           ||   ____|    /       |\r\n"
+					+ "   |   (----`|  \\  /  |    /  ^  \\    |  |_)  |    `---|  |----`|  |_)  | |  | `---|  |----`|  |__      |   (----`\r\n"
+					+ "    \\   \\    |  |\\/|  |   /  /_\\  \\   |      /         |  |     |   _  <  |  |     |  |     |   __|      \\   \\    \r\n"
+					+ ".----)   |   |  |  |  |  /  _____  \\  |  |\\  \\----.    |  |     |  |_)  | |  |     |  |     |  |____ .----)   |   \r\n"
+					+ "|_______/    |__|  |__| /__/     \\__\\ | _| `._____|    |__|     |______/  |__|     |__|     |_______||_______/    \r\n"
+					+ "                                                                                                                  \r\n"
+					+ "");
+			System.out.println("Prova la nuova Ratogade al mirtillo e pesca!");
 			do {
 				do {
 					System.out.println("Scegli fra bevanda calda o fredda!");
@@ -105,6 +114,7 @@ public class Main {
 					System.out.println("Hai ricevuto " + creditoResiduo + "€ di resto.");
 				creditoResiduo = 0;
 			}
-		} while (conferma.equalsIgnoreCase("no"));
+			System.out.println("Arrivederci!");
+		} while (!conferma.equalsIgnoreCase("si"));
 	}
 }
